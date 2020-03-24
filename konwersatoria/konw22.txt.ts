@@ -2,15 +2,18 @@
 // ...c.d.typów
 // ------------
 
-// Type assertion: '12' as number
-let a = 12;
-// const b: string = a; //error
-// const b: string = a as string; // error - no bo jak?
-const b: string = a as unknown as string; // error - no bo jak?
 
+// Type assertion: '12' as number
 // let aa = document.querySelector('#asd'); // type: Element
 let aa: HTMLInputElement = document.querySelector('#asd'); // type: HTMLInputElement
 (aa as HTMLInputElement).value
+
+
+let a = 12;
+// const b: string = a; //error
+// const b: string = a as string; // error - no bo jak?
+const b: string = a as unknown as string; // brzydko, czasami wiemy lepiej niż typescript language service
+
 
 // tablice
 let arrA: number[]; // = [1, 2, 3]
@@ -40,16 +43,20 @@ let [fname, lname] = destrA;
 function restParams(first: number, ...others: number[]) {
     console.log(first, others)
 }
-// restParams(10, 12, 123,234,345,345,45,645,7,56,686)
+restParams(10, 12, 123, 234, 345, 345, 45, 645, 7, 56, 686)
+
 
 // ------------
 // SPREAD OPERATOR 
 // ------------
 
-// działa array & objects (tylko enumerable props - bez metod)
+// działa na array & objects (tylko enumerable props - bez metod)
 let first = [1, 2];
 let second = [3, 4];
 let bothPlus = [0, ...first, ...second, 5];
+// [0, 1, 2, 3, 4, 5] z spread
+// [0, [1,2], [3,4], 5] bez spread
+
 // ------------
 // Enumeratory
 // ------------
@@ -60,7 +67,8 @@ enum PermTypes {
     read,
     write
 }
-enum SmarterPermTypes { 'none' = 1, 'read' = 2, 'write' = 4 } // dlaczego smarter?
+enum SmarterPermTypes { 'none' = 1, 'read' = 2, 'write' = 4, 'exec' = 8 } // dlaczego smarter?
+
 // const upr = PermTypes.read | PermTypes.write
 // tekstowe
 enum StringPermTypes {
@@ -79,16 +87,24 @@ interface Box {
     color?: string; // właściwość opcjonalna
     readonly id: number; // readonly 
     isEmpty?(): boolean; // funkcje
-    [propName: string]: any; //index signature - pozostałe właściwości obiektu
 }
+
 // implementacja: 
 class BoxObject implements Box {
     id = 1;
 }
 
+interface BoxLabelsCollection {
+    [propName: string]: { id: number, label: string }; //index signature -  właściwości obiektu
+}
+let blc: BoxLabelsCollection = { 'fragiles': { id: 1, label: 'Fragile' } } // dzięki index sign mamy typowanie
+
+
 interface Package {
     fabric: 'wood' | 'plastic' | 'glass';
 }
+let pck: Package = { fabric: "glass" }; // j/w
+
 //  rozszerzanie: 
 interface BoxWithDimensions extends Box { //można rozszerzać po wielu interfejsach
     width: number;

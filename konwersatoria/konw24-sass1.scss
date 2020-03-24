@@ -1,0 +1,98 @@
+// rozszerzenia: scss lub saas (starsza wersja)
+// skupiamyy się na scss, które ma składnie zgodną z css
+
+// każdy kod css jest zgodny z scss
+
+// -------------------
+// Zagnieżdżanie styli
+// -----------------
+body {
+  background: #000;
+  article {
+    margin: 10px;
+    div {
+      display: flex;
+    }
+  }
+}
+
+// zostanie skompilowane do
+body {
+  background: #000;
+}
+body article {
+  margin: 10px;
+}
+body article div {
+  display: flex;
+}
+
+// -------------
+// odwołania do rodzica
+// -------------
+
+#label {
+  padding: 10px;
+  &:hover {
+    background: lightcoral;
+  }
+  &.selected {
+    background: red;
+  }
+}
+// skompilowane do selektorów
+// #label, #label:hover oraz #label.selected
+
+// -------------------
+// zmienne
+// -----------------
+
+// pure css: (muszą być deklarowane w jakimś zakresie, globalny to :root - dla stron to odpowiednik <html>
+:root {
+  --primaryColor: #333;
+}
+div {
+  color: var(--primaryColor);
+}
+// sass way
+$secondaryColor: #aaa;
+span {
+  color: $secondaryColor;
+}
+
+// ----------
+// mixiny
+// ----------
+@mixin defaultBox {
+  border: 1px solid #000;
+  padding: 10px;
+  margin: 15px;
+}
+
+div {
+  @include defaultBox();
+}
+
+// mixiny z parametrami
+
+@mixin paddingMargin($val) {
+  padding: $val;
+  margin: -$val;
+}
+nav {
+  @include paddingMargin(15px);
+}
+
+// -----------
+// operatory
+// ----------
+section {
+  width: 250px/700px; // +, -, *, /, %
+}
+
+// ---------
+// import styli z innego pliku
+// -----------
+
+// @import 'scss/box'
+// dokumentacja: https://sass-lang.com/documentation
