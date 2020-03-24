@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -11,6 +12,15 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js", ".json"]
   },
   devtool: "inline-source-map",
+  plugins: [
+    new CopyPlugin([
+      {
+        from: "src/*.html",
+        to: "",
+        flatten: true
+      }
+    ])
+  ],
   module: {
     rules: [
       // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
