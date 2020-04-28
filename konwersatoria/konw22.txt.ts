@@ -12,7 +12,7 @@ let aa: HTMLInputElement = document.querySelector('#asd'); // type: HTMLInputEle
 let a = 12;
 // const b: string = a; //error
 // const b: string = a as string; // error - no bo jak?
-const b: string = a as unknown as string; // brzydko, czasami wiemy lepiej niż typescript language service
+const b: string = a as any as string; // brzydko, czasami wiemy lepiej niż typescript language service
 
 
 // tablice
@@ -29,7 +29,7 @@ constArr.push(4);
 // DESTRUKTURYZACJA
 // ------------
 let destrA = ['john', 'doe'];
-let [fname, lname] = destrA;
+let [fname, lname]: string[] = destrA;
 // dlaczego nie mogę [fname, lname]: [string, string] ale musze string[]?
 
 // pomocne przy szybkiej podmianie wartości
@@ -43,6 +43,7 @@ let [fname, lname] = destrA;
 function restParams(first: number, ...others: number[]) {
     console.log(first, others)
 }
+// restParams(10, 12 ,12 ,3 )
 restParams(10, 12, 123, 234, 345, 345, 45, 645, 7, 56, 686)
 
 
@@ -97,7 +98,10 @@ class BoxObject implements Box {
 interface BoxLabelsCollection {
     [propName: string]: { id: number, label: string }; //index signature -  właściwości obiektu
 }
-let blc: BoxLabelsCollection = { 'fragiles': { id: 1, label: 'Fragile' } } // dzięki index sign mamy typowanie
+let blc: BoxLabelsCollection =
+{
+    'fragiles': { id: 1, label: 'fragile' },
+} // dzięki index sign mamy typowanie
 
 
 interface Package {

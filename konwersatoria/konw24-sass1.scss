@@ -72,6 +72,16 @@ span {
 div {
   @include defaultBox();
 }
+// odpowiednikiem mixina bez parametrów jest extend
+%blackonwhite {
+  background: black;
+  color: white;
+}
+
+aside {
+  @extend %blackonwhite;
+  font-style: italic;
+}
 
 // mixiny z parametrami
 
@@ -93,6 +103,33 @@ section {
 // ---------
 // import styli z innego pliku
 // -----------
-
+// stary sposób: (import do global space)
 // @import 'scss/box'
+// aktualnie (z przestrzenią nazw)
+// @use 'scss/box'
+
+// interpolacja
+@mixin corner-icon($name, $top-or-bottom, $left-or-right) {
+  .icon-#{$name} {
+    background-image: url("/icons/#{$name}.svg");
+    position: absolute;
+    #{$top-or-bottom}: 0;
+    #{$left-or-right}: 0;
+  }
+}
+
+@include corner-icon("mail", top, left);
+
+//wbudowane moduły
+// mapy
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+);
+
+@debug map.get($font-weights, "medium"); // 500
+@debug map.get($font-weights, "extra-bold"); // null
+
+// https://sass-lang.com/documentation/modules/color
 // dokumentacja: https://sass-lang.com/documentation

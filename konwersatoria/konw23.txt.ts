@@ -55,6 +55,7 @@ const s = Person.sex[1] // użycie właściwości statycznej klasy Person
 
 // inny sposób deklaracji właściwości klas z użyciem konstruktora
 class Person2 {
+    age: number;
     constructor(private firstName: string, public lastName: string) { }
 
     getPersonalData(): string {
