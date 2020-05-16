@@ -8,13 +8,12 @@ const bar = ''
 if (foo && foo.bar) {
     const x = foo.bar.baz()
 }
+// const x = foo && foo.bar && foo.baz()
 
 // optional chaining
 const x = foo?.bar?.baz();
 // ? nie robi 'falsy' values w przeciwieństwie do && w if, 
-// np 
-// let count = 0
-// let qty = count || 42;
+
 
 // nullish coalescing
 // problem:
