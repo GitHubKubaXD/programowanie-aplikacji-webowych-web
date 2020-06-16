@@ -1,7 +1,5 @@
 const foo = { bar: { baz: () => { } } };
 const bar = ''
-// TODO
-// Moduły - import/export (commonjs)
 
 // optional chaining
 // problem: 
