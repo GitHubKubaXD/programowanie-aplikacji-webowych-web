@@ -7,7 +7,7 @@ export class DateField implements Field{
     FieldType: string;
     Value: string;
     
-    constructor(label:FieldLabel, name: string= "", fieldType: string="date", value: string=""){
+    constructor(label:FieldLabel, name: string= "", fieldType: string="date",value: string=""){
         this.Label = label;
         this.Name = name;
         this.FieldType = fieldType;

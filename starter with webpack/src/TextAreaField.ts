@@ -8,7 +8,7 @@ export class TextAreaField implements Field{
     FieldType: string;
     Value: string;
     
-    constructor(label:FieldLabel, name: string= "", fieldType: string="textArea", value: string=""){
+    constructor(label:FieldLabel, name: string= "", fieldType: string="textArea",value: string=""){
         this.Label = label;
         this.Name = name;
         this.FieldType = fieldType;

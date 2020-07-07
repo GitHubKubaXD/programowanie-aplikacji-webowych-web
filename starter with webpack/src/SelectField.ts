@@ -23,7 +23,13 @@ export class SelectField implements Field{
         const div = document.createElement("div");
         const label = this.Label.render()
         div.appendChild(label)
-        const selectField = document.createElement("input");        
+        const selectField = document.createElement("select");  
+        selectField.setAttribute("id", "mySelect");  
+        document.body.appendChild(selectField);
+        var x = document.getElementById("mySelect");
+        var option = document.createElement("option"); 
+        option.text = "Informatyka";
+        selectField.appendChild(option);
         if(this.FieldType){selectField.setAttribute("type", this.FieldType)}
         if(this.Name){selectField.setAttribute("name", this.Name)}
         if(this.Value){selectField.setAttribute("value", this.Value)}              
