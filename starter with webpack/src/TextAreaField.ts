@@ -7,27 +7,34 @@ export class TextAreaField implements Field{
     Name: string;
     FieldType: string;
     Value: string;
+    ID: string;
     
     constructor(label:FieldLabel, name: string= "", fieldType: string="textArea",value: string=""){
         this.Label = label;
         this.Name = name;
         this.FieldType = fieldType;
         this.Value = value;
+        this.ID = "TextAreaField";
     }
     
 
     getLabel():string{
         return this.Label.Label
     }
+
+    getValue(): string {
+        return (<HTMLInputElement>document.getElementById(this.ID)).value;
+    }
+    
     render(): HTMLElement{
         const div = document.createElement("div");
         const label = this.Label.render()
         div.appendChild(label)
         const textAreaField = document.createElement("input");        
-        if(this.FieldType){textAreaField.setAttribute("type", this.FieldType)}
-        if(this.Name){textAreaField.setAttribute("name", this.Name)}
-        if(this.Value){textAreaField.setAttribute("value", this.Value)}              
-        textAreaField.innerHTML += this.Value;
+        textAreaField.type = "textarea"; 
+        textAreaField.name = this.Name;             
+        textAreaField.id = this.ID;
+        textAreaField.value = this.Value;
         div.appendChild(textAreaField) 
         return div
     }

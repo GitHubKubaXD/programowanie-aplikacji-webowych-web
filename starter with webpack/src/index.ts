@@ -17,7 +17,7 @@ const app = new App();
 
 document.addEventListener('DOMContentLoaded', (event) =>{
     var form = new Form(new InputField(new FieldLabel("Imię: "), "input", "input"),
-    new DateField(new FieldLabel("Nazwisko: "), "input", "input"),
+    new InputField(new FieldLabel("Nazwisko: "), "input", "input", ""),
     new EmailField(new FieldLabel("Email: "), "email", "email"),
     new SelectField(new FieldLabel("Wybierz kierunek studiów: "), "select", "select")      ,        
        new CheckBoxField(new FieldLabel("Czy preferujesz e-learning?: "), "checkbox", "checkbox"),

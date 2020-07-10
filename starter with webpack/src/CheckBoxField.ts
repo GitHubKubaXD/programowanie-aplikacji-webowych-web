@@ -6,12 +6,14 @@ export class CheckBoxField implements Field{
     Name: string;
     FieldType: string;
     Value: string;
+    ID: string;
     
     constructor(label:FieldLabel, name: string= "", fieldType: string="checkBox", value: string=""){
         this.Label = label;
         this.Name = name;
         this.FieldType = fieldType;
         this.Value = value;
+        this.ID = "CheckBoxField"
     }
     
 
@@ -19,15 +21,23 @@ export class CheckBoxField implements Field{
 
         return this.Label.Label
     }
+
+    getValue(): string {
+        if ((<HTMLInputElement>document.getElementById(this.ID)).checked) {
+            return '1'
+        } else
+        return '0'
+    }
+
     render(): HTMLElement{
         const div = document.createElement("div");
         const label = this.Label.render()
         div.appendChild(label)
         const checkboxField = document.createElement("input");        
-        if(this.FieldType){checkboxField.setAttribute("type", this.FieldType)}
-        if(this.Name){checkboxField.setAttribute("name", this.Name)}
-        if(this.Value){checkboxField.setAttribute("value", this.Value)}             
-        checkboxField.innerHTML += this.Value;
+        checkboxField.type = "checkbox"; 
+        checkboxField.name = this.Name;             
+        checkboxField.id = this.ID;
+        checkboxField.value = this.Value;
         div.appendChild(checkboxField) 
 
         return div
