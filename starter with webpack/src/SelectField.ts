@@ -33,9 +33,15 @@ export class SelectField implements Field{
         const selectField = document.createElement("select");  
         //selectField.setAttribute("select");
         document.body.appendChild(selectField);
-        var option = document.createElement("option"); 
-        option.text = "Informatyka";
-        selectField.appendChild(option);
+        var option1 = document.createElement("option"); 
+        option1.text = "Informatyka";
+        selectField.appendChild(option1);
+        var option2 = document.createElement("option"); 
+        option2.text = "ELO";
+        selectField.appendChild(option2);
+        var option3 = document.createElement("option"); 
+        option3.text = "Bożena Wiśniewska";
+        selectField.appendChild(option3);
         selectField.name = this.Name;             
         selectField.id = this.ID;
         selectField.value = this.Value;

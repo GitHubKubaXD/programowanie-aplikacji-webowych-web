@@ -1,5 +1,4 @@
 import { FieldLabel } from "./FieldLabel";
-
 import {Field} from "./Field";
 
 export class TextAreaField implements Field{

@@ -6,8 +6,8 @@ import { DateField } from "./DateField";
 import { SelectField } from "./SelectField";
 
 export class Form{
-    
-    values: FormData;
+    Elements: any[];
+    ID: string = "form";
     fieldTab: [
         InputField,
         TextAreaField,
@@ -30,8 +30,20 @@ export class Form{
     }
 
     getValue(){
-        this.values = new FormData(document.querySelector("form"))
-        console.log(this.values)
+       
+        const answers = [];
+        
+        for (let i = 0; i < this.Elements.length; i++) {
+            const childrenElement = this.Elements[i].children[1];
+            if (childrenElement.type == "checkbox") {
+                console.log(childrenElement);
+                answers[i] = (<HTMLInputElement>document.getElementById(childrenElement.id)).checked;
+            } else {
+                console.log(childrenElement);
+                answers[i] = (<HTMLInputElement>document.getElementById(childrenElement.id)).value;
+            }
+        }
+        return answers;
     }
 
     render(){
@@ -41,9 +53,9 @@ export class Form{
         this.fieldTab.forEach(element => {
             form.appendChild(element.render())
         });   
-        button.setAttribute("type", "submit")
-        button.onclick = function(){form.getValue()}
-        form.appendChild(button)  
+       //button.setAttribute("type", "submit")
+        //button.onclick = function(){form.getValue()}
+        //form.appendChild(button)  
         return form      
     }
     
