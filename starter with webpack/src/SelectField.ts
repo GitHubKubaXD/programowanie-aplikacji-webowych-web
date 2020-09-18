@@ -9,7 +9,7 @@ export class SelectField implements Field{
     Value: string;
     ID: string;
     
-    constructor(label:FieldLabel, name: string= "", fieldType: string="select", value: string=""){
+    constructor(label:FieldLabel, name: string= "", fieldType: string="select", options: string[], value: string=""){
         this.Label = label;
         this.Name = name;
         this.FieldType = fieldType;

@@ -13,7 +13,7 @@ export class CheckBoxField implements Field{
         this.Name = name;
         this.FieldType = fieldType;
         this.Value = value;
-        this.ID = "CheckBoxField"
+        this.ID = name
     }
     
 
@@ -31,13 +31,13 @@ export class CheckBoxField implements Field{
 
     render(): HTMLElement{
         const div = document.createElement("div");
-        const label = this.Label.render()
-        div.appendChild(label)
+        const label = this.Label.render();
+        div.appendChild(label);
         const checkboxField = document.createElement("input");        
         checkboxField.type = "checkbox"; 
         checkboxField.name = this.Name;             
         checkboxField.id = this.ID;
-        checkboxField.value = this.Value;
+        checkboxField.checked = this.Value == '1';
         div.appendChild(checkboxField) 
 
         return div

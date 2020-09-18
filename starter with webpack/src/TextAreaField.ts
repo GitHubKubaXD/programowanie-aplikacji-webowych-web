@@ -13,7 +13,7 @@ export class TextAreaField implements Field{
         this.Name = name;
         this.FieldType = fieldType;
         this.Value = value;
-        this.ID = "TextAreaField";
+        this.ID = name;
     }
     
 
@@ -29,8 +29,7 @@ export class TextAreaField implements Field{
         const div = document.createElement("div");
         const label = this.Label.render()
         div.appendChild(label)
-        const textAreaField = document.createElement("input");        
-        textAreaField.type = "textarea"; 
+        const textAreaField = document.createElement("textarea");        
         textAreaField.name = this.Name;             
         textAreaField.id = this.ID;
         textAreaField.value = this.Value;

@@ -5,5 +5,7 @@ export interface Field{
     Name: string,    
     FieldType: string,
     Value: string,
+    options?:string[],
     render():HTMLElement;
+    getValue():string,
 }

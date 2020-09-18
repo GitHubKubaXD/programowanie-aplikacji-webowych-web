@@ -13,7 +13,7 @@ export class InputField implements Field{
         this.Name = name;
         this.FieldType = fieldType;
         this.Value = value;
-        this.ID = "InputField";
+        this.ID = name;
     }
     
 

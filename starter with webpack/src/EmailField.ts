@@ -13,7 +13,7 @@ export class EmailField implements Field{
         this.Name = name;
         this.FieldType = fieldType;
         this.Value = value;
-        this.ID = "EmailField";
+        this.ID = name;
     }
     
 

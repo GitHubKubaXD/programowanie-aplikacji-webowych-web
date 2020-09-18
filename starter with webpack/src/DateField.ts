@@ -13,7 +13,7 @@ export class DateField implements Field{
         this.Name = name;
         this.FieldType = fieldType;
         this.Value = value;
-        this.ID = "DateField";
+        this.ID = name;
     }
     
 
@@ -26,14 +26,14 @@ export class DateField implements Field{
     }
     render(): HTMLElement{
         const div = document.createElement("div");
-        const label = this.Label.render()
-        div.appendChild(label)
+        const label = this.Label.render();
+        div.appendChild(label);
         const dateField = document.createElement("input");        
         dateField.type = "date"; 
         dateField.name = this.Name;             
         dateField.id = this.ID;
         dateField.value = this.Value;
-        div.appendChild(dateField) 
+        div.appendChild(dateField);
         return div
     }
 }
